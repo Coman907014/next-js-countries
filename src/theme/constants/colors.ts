@@ -1,0 +1,32 @@
+const colors = {
+  // Some Random Colors
+  black: '#312F43',
+  blue: '#0770B6',
+  blueDark: '#312F43',
+  blueLight: '#EAEAEC',
+  green: '#0AD2A0',
+  greenLight: '#80E4CB',
+  greenLighter: '#CEF6EC',
+  grey: '#83828E',
+  greyDark: '#5A5969',
+  greyDarker: '#6E6D7B',
+  greyLight: '#ADACB4',
+  greyLighter: '#EAEAEC',
+  pink: '#FBDFE8',
+  pinkDark: '#BD4D6E',
+  pinkLight: '#FDEFF3',
+  purpleLight: '#EFEEF6',
+  red: '#E02120',
+  redDark: '#C21C1C',
+  redLight: '#F7E4E4',
+  teal: '#0AD2A0',
+  tealDark: '#08A880',
+  tealLight: '#80E4CB',
+  white: '#FFFFFF',
+  whiteDark: '#F8F9FD',
+  whiteDarker: '#D6D5D9',
+  whiteDarkest: '#C6C6CC',
+  yellow: '#FEECD2',
+};
+
+export default colors;
