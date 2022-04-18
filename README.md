@@ -21,8 +21,20 @@ Storybook docs here.
 
 Cypress docs here
 
-# TODO
+# Needed Updates & Improvements
 
-1. Audit packages and remove high & mid severity vulnerabilities. Security++!
-2. Add translations library
+Search for @TODO:
+
+# TODO
+SEARCH & Filter
+1. Mobile Landing Page
+2. Mobile Details
+3. Cypress Coverage
+4. Audit packages and remove high & mid severity vulnerabilities. Security++!
+5. Add translations library
+6. For better SEO we should replace country code to country name in URL
+
+# Known BE Issues
+Slovakia has a very small image
+Czech Republic has no border countries
 

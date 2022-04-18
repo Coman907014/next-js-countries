@@ -30,6 +30,13 @@ const commonTheme = {
   },
 }
 
+// - Dark Blue (Dark Mode Elements): hsl(209, 23%, 22%)
+// - Very Dark Blue (Dark Mode Background): hsl(207, 26%, 17%)
+// - Very Dark Blue (Light Mode Text): hsl(200, 15%, 8%)
+// - Dark Gray (Light Mode Input): hsl(0, 0%, 52%)
+// - Very Light Gray (Light Mode Background): hsl(0, 0%, 98%)
+// - White (Dark Mode Text & Light Mode Elements): hsl(0, 0%, 100%)
+
 export const lightTheme = {
   ...commonTheme,
   colors: {
@@ -38,10 +45,6 @@ export const lightTheme = {
     black,
     blue,
     blueDarker,
-    text: black,
-    header: white,
-    iconFill: black,
-    iconBorder: white,
     blueDarkerHover,
     teal,
     greenT90,
@@ -53,6 +56,14 @@ export const lightTheme = {
     tealDark,
     white,
     whiteDarkest,
+    text: black,
+    header: white,
+    iconFill: black,
+    iconBorder: white,
+    bodyBackground: `hsl(0, 0%, 98%)`,
+    cardBackground: `hsl(0, 0%, 100%)`,
+    cardBorder: `hsl(0, 0%, 100%)`,
+    cardShadow: whiteDarkest
   }
 };
 
@@ -63,10 +74,6 @@ export const darkTheme = {
     beige,
     black,
     blue: '#45b6fe',
-    text: white,
-    header: blueDarker,
-    iconFill: white,
-    iconBorder: blueDarker,
     blueDarker: '#3792cb',
     blueDarkerHover: '#296d98',
     teal,
@@ -79,5 +86,12 @@ export const darkTheme = {
     tealDark,
     white,
     whiteDarkest,
+    text: `hsl(0, 0%, 100%)`,
+    header: blueDarker,
+    iconFill: white,
+    iconBorder: blueDarker,
+    bodyBackground: `hsl(207, 26%, 17%)`,
+    cardBackground: `hsl(209, 23%, 22%)`,
+    cardBorder: `hsl(0, 0%, 100%)`,
   },
 }

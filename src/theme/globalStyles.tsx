@@ -6,17 +6,12 @@ import mediaBelow from './utils/mediaBelow/mediaBelow';
 const CustomGlobalStyles = createGlobalStyle`
   body {
     overflow-x: hidden;
-    background-color: ${({ theme: { colors } }: ThemeProps<CustomThemeProps>) => colors.blueDark};
-    font-size: 16px;
+    background-color: ${({ theme: { colors } }: ThemeProps<CustomThemeProps>) => colors.bodyBackground};
+    font-size: 14px;
     font-family: 'Open Sans', sans-serif;
     line-height: 1.25;
     text-align: center;
     margin: 0;
-  }
-
-  .no-scroll {
-    height: 100%;
-    overflow: hidden;
   }
 
   h1 {
@@ -32,12 +27,12 @@ const CustomGlobalStyles = createGlobalStyle`
   }
 
   h2 {
-    margin-bottom: 2.5rem;
-    font-size: 2.25rem;
+    margin: 0;
+    font-size: 1rem;
     font-style: oblique;
 
     ${mediaBelow.desktop(css`
-      font-size: 1.5rem;
+      font-size: 0.75rem;
     `)}
   }
 

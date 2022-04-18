@@ -6,15 +6,8 @@ export default {
   title: 'Components/Card',
   component: Card,
   parameters: {
-    // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
     layout: 'fullscreen',
   },
-  // argTypes: {
-  //   variant: {
-  //     options: ['primary', 'secondary'],
-  //     control: { type: 'radio' },
-  //   },
-  // },
 } as ComponentMeta<typeof Card>;
 
 const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />;

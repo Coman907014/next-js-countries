@@ -16,7 +16,7 @@ export const parameters = {
 
 export const decorators = [
   (Story, props) => {
-    const [currentTheme, setCurrentTheme] = useState<string>(Themes.light);
+    const [currentTheme, setCurrentTheme] = useState(Themes.light);
 
     const possibleThemes = {
       light: lightTheme,
@@ -26,8 +26,16 @@ export const decorators = [
     return (
     <ThemeProvider theme={possibleThemes[currentTheme]}>
       <GlobalStyles />
-      <button onClick={() => currentTheme === Themes.light ? setCurrentTheme(Themes.light.dark): setCurrentTheme(Themes.light)}>Change Team</button>
-      <div style={{ maxWidth: '1200px', margin: 'auto' }}>
+      <h3 style={{ color: 'red' }}>Current Theme: {currentTheme}</h3>
+      <button onClick={() => currentTheme === Themes.light ? setCurrentTheme(Themes.dark): setCurrentTheme(Themes.light)}>Change Theme</button>
+      <div style={{
+        maxWidth: '1200px',
+        margin: ' 10px auto',
+        display: 'flex',
+        justifyContent: 'center',
+        border: '1px solid black',
+        padding: '5px 0'
+      }}>
         <Story {...props}/>
       </div>
     </ThemeProvider>

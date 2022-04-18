@@ -1,16 +1,14 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import { FunctionComponent } from 'react'
+import React, { FunctionComponent } from 'react'
 import countriesApi from '../../src/api/countries'
 import { Country } from '../../src/models/Country'
+import CountriesPageComponent from '../../src/pages/countries/Countries'
 
 interface CountriesPageProps {
   countries: Country[];
-  toggleTheme: () => void;
 }
 
-const CountriesPage: FunctionComponent<CountriesPageProps> = ({ countries, toggleTheme }) => {
-  console.log('countries', countries[0])
+const CountriesPage: FunctionComponent<CountriesPageProps> = ({ countries }) => {
 
   return (
     <div>
@@ -21,21 +19,8 @@ const CountriesPage: FunctionComponent<CountriesPageProps> = ({ countries, toggl
       </Head>
 
       <main>
-       Countries Page
+        <CountriesPageComponent countries={ countries } />
       </main>
-
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
     </div>
   )
 }

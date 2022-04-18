@@ -15,55 +15,23 @@ export interface Breakpoints {
 }
 
 const breakpoints: Breakpoints = {
+  // @ TODO: We need more breakpoints: tablet, large/small desktop, small mobile
   desktop: {
-    breakpoint: 1024,
-    gutter: {
-      inset: '2rem',
-      normal: '2rem',
-    },
-    maxWidth: {
-      inset: '960px',
-      normal: 'none',
-    },
-  },
-  desktopLarge: {
     breakpoint: 1440,
     gutter: {
       inset: '2rem',
-      normal: '2.5rem',
+      normal: '2rem',
     },
     maxWidth: {
       inset: '960px',
-      normal: '1700px',
+      normal: 'none',
     },
   },
   mobile: {
-    breakpoint: 0,
+    breakpoint: 395,
     gutter: {
       inset: '1.5rem',
       normal: '1.5rem',
-    },
-    maxWidth: {
-      inset: 'none',
-      normal: 'none',
-    },
-  },
-  mobileLarge: {
-    breakpoint: 480,
-    gutter: {
-      inset: '1.5rem',
-      normal: '1.5rem',
-    },
-    maxWidth: {
-      inset: 'none',
-      normal: 'none',
-    },
-  },
-  tablet: {
-    breakpoint: 768,
-    gutter: {
-      inset: '2rem',
-      normal: '2rem',
     },
     maxWidth: {
       inset: 'none',
