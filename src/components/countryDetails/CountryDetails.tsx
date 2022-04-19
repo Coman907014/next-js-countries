@@ -13,7 +13,7 @@ const CountryDetails: FunctionComponent<CountryDetailsProps> = ({ country }) => 
         style={{ width: 'auto' }}          
         body={{
           ['native-name']: country.nativeName,
-          population: country.population,
+          population: new Intl.NumberFormat('en-US').format(country.population),
           region: country.region,
           ['sub-region']: country.subregion
         }}

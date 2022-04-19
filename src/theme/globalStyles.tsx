@@ -28,7 +28,7 @@ const CustomGlobalStyles = createGlobalStyle`
 
   h2 {
     margin: 0;
-    font-size: 1rem;
+    font-size: 2.2rem;
     font-style: oblique;
 
     ${mediaBelow.desktop(css`

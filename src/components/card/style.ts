@@ -1,5 +1,6 @@
 import styled, { ThemeProps, css }  from 'styled-components';
 import { CustomThemeProps } from '../../models/Theme';
+import mediaBelow from '../../theme/utils/mediaBelow/mediaBelow';
 
 const cardWidth = 20;
 
@@ -7,7 +8,7 @@ export const CardWrapper = styled.div<{width?: string; shadow?: boolean}>`
   display: block;
   box-shadow: ${(p) => {
     if(!p.shadow || !p.theme.colors.cardShadow) return;
-    return ` 3px 3px ${p.theme.colors.cardShadow}`;
+    return `3px 3px ${p.theme.colors.cardShadow}`;
   } };
   color: ${({ theme: { colors } }: ThemeProps<CustomThemeProps>) => colors.text};
   background-color: ${({ theme: { colors } }: ThemeProps<CustomThemeProps>) => colors.cardBackground};
@@ -15,7 +16,13 @@ export const CardWrapper = styled.div<{width?: string; shadow?: boolean}>`
   border: 1px solid ${({ theme: { colors } }: ThemeProps<CustomThemeProps>) => colors.cardBorder};
   width: ${p => p.width ?? `${cardWidth}%`};
   margin: 5px calc(${cardWidth}%/6);
-  cursor: pointer
+  cursor: pointer;
+
+  ${mediaBelow.mobile(
+    css`
+      width: auto;
+    `
+  )}
 `
   
 export const CardImage = styled.img`
@@ -26,11 +33,18 @@ export const CardImage = styled.img`
   border-top-right-radius: 20px;
   border-bottom: 1px solid black;
   top: 0;
+
+  ${mediaBelow.mobile(
+    css`
+      height: 150px;
+    `
+  )}
 `
 
 export const CardTitle = styled.h2`
   padding: 5px;
   height: 50px;
+  font-size: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -10,8 +10,8 @@ export const ChildrenWrapper = styled.div`
   max-width: 1200px;
   margin: auto;
  
-  // ${mediaBelow.mobile(css`
-  //   padding: 0 2px;
-  //   max-width: calc(100% - 21px);
-  // `)}
+  ${mediaBelow.mobile(css`
+    padding: 0 2px;
+    max-width: calc(100% - 21px);
+  `)}
 `

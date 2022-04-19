@@ -19,22 +19,29 @@ Storybook docs here.
 
 # Cypress
 
+data-test attributes denomination: element:component:unique-identifier
+"title:card:0". Title element, inside card component, which has index 0.
+(We presume it's an element mapping and that's the index)
+
 Cypress docs here
 
 # Needed Updates & Improvements
 
-Search for @TODO:
+Search for @TODO
 
 # TODO
-SEARCH & Filter
-1. Mobile Landing Page
-2. Mobile Details
+
+1. Mobile Landing Page - DONE
+  1.a. Search & Filter
+  1.b. Extract new Intl.NumberFormat into a number formatting service
+2. Mobile Details - DONE
+  2.a. Details Page Back Button - DONE
 3. Cypress Coverage
 4. Audit packages and remove high & mid severity vulnerabilities. Security++!
 5. Add translations library
 6. For better SEO we should replace country code to country name in URL
+7. Loaders are inexistent and calls might take a bit too long. Should be added.
 
 # Known BE Issues
-Slovakia has a very small image
 Czech Republic has no border countries
 

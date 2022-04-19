@@ -1,4 +1,5 @@
-import styled, { css } from "styled-components";
+import styled, { css, ThemeProps } from "styled-components";
+import { CustomThemeProps } from "../../models/Theme";
 import mediaBelow from "../../theme/utils/mediaBelow/mediaBelow";
 
 export const CountryWrapper = styled.section`
@@ -15,7 +16,7 @@ export const CountryWrapper = styled.section`
 `
 
 export const Content = styled.div<{ flexDirection?: string }>`
-display: inline-flex;
+  display: inline-flex;
   flex-direction: ${ ({ flexDirection }) => flexDirection || 'column' };
   justify-content: center;
   align-items: center;
@@ -37,5 +38,26 @@ export const CountryFlag = styled.img`
 
 export const CountryTitle = styled.h2`
   padding: 10px 0;
-  font-size: 2rem
+  font-size:
+`
+
+export const BackButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ${({ theme: { colors } }: ThemeProps<CustomThemeProps>) => colors.text};
+  background-color: ${({ theme: { colors } }: ThemeProps<CustomThemeProps>) => colors.buttonBackground};
+  box-shadow: ${(p) => `3px 3px 3px 3px ${p.theme.colors.cardShadow}`};
+  margin: 30px;
+  left: 0;
+  cursor: pointer;
+
+  svg {
+    padding-right: 5px;
+    fill: ${({ theme: { colors } }: ThemeProps<CustomThemeProps>) => colors.text};
+  }
+`
+
+export const ButtonWrapper = styled.div`
+  width: 100%;
 `

@@ -35,7 +35,7 @@ const Card: FunctionComponent<CardProps> = ({ image, title, body, onClick, style
       }
       {
         title &&
-        <CardTitle data-test={`text:card:${dataTestTitle ? `:${dataTestTitle}` : ''}`} >
+        <CardTitle data-test={`title:card:${dataTestTitle ? `:${dataTestTitle}` : ''}`} >
           { title }
         </CardTitle>
       }
