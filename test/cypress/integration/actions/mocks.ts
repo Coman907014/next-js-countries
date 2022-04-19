@@ -1,6 +1,7 @@
 import { Country } from '../../../../src/models/Country';
 import defaultCountries from '../../fixtures/defaultCountries';
 import detailedCountry from '../../fixtures/detailedCountry';
+import detailedCountry2 from '../../fixtures/detailedCountry2';
 
 const mocks = {
   getAllCountries: () => {
@@ -23,7 +24,7 @@ const mocks = {
           .as('request:searchByName')
       })
   },
-  getCountryDetails: (alpha3: string) => {
+  getCountryDetails: (alpha3: string, isSecond?: boolean) => {
 
     cy.task('clearNock');
     cy.task('nock', {
@@ -34,7 +35,7 @@ const mocks = {
       // @TODO:
       // Should be more abstract
       // When multiple responses are need, add body dynamically.
-      body: detailedCountry
+      body: isSecond ? detailedCountry2 : detailedCountry
     })
   }
 }

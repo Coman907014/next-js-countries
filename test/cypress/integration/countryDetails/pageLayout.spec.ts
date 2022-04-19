@@ -1,6 +1,6 @@
 import mocks from "../actions/mocks";
 
-describe('Countries Page Search Bar', () => {
+describe('Country Details - Page Layout', () => {
 
   beforeEach(() => {
     mocks.getCountryDetails('bgr')
@@ -8,7 +8,7 @@ describe('Countries Page Search Bar', () => {
     cy.visit('http://localhost:3000/country/bgr');
   })
 
-  it('Should filter countries by region', () => {
+  it('Should render static content', () => {
 
     cy.location('href').should('contain', 'country/bgr');
     
@@ -56,6 +56,18 @@ describe('Countries Page Search Bar', () => {
     
     cy.get(`[data-test='text:neighbouring-countries:TUR']`)
       .should('exist');
+
+  })
+
+  it('Should go back to first page on back button click', () => {
+
+    cy.location('href').should('contain', 'country/bgr');
     
+    mocks.getAllCountries();
+    
+    cy.get('[data-test="button:country:back"]')
+      .click()
+  
+    cy.location('href').should('not.contain', 'country/bgr');
   })
 })
