@@ -7,6 +7,13 @@ const countriesApi = {
       .get('all')
       .then(response => response.data as Country[])
   },
+  // @TODO: This one is being used for our own API
+  // Should be moved into another domain.
+  getByNameAPI(name: string): any {
+    return httpClient
+      .get(`api/name/${name}`)
+      .then(response => response.data as Country)
+  },
   getByName(name: string): any {
     return httpClient
       .get(`name/${name}`)

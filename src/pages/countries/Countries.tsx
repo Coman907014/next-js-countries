@@ -3,8 +3,11 @@ import { useRouter } from 'next/router'
 import Card from "../../components/card/Card";
 import { Country } from "../../models/Country";
 
-import { CountriesWrapper } from "./style";
+import { CountriesWrapper, SearchAndFilterWrapper } from "./style";
 import FilterDropdown from "../../components/filterDropdown/FilterDropdown";
+import SearchBox from "../../components/searchBox/SearchBox";
+import countriesApi from "../../api/countries";
+import SearchConsole from "../../components/searchConsole/SearchConsole";
 
 interface CountriesProps {
   countries: Country[]
@@ -12,70 +15,98 @@ interface CountriesProps {
 
 const CountriesPageComponent: FunctionComponent<CountriesProps> = ({ countries }) => {
   const [filteredCountries, setFilteredCountries] = useState<Country[] | null>(null);
+  const [searchError, setSearchError] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState<string>('');
   const router = useRouter();
 
-  const allRegions: string[] = countries.map((country: Country) => country.region);
-  console.log('allRegions', [...new Set(allRegions)]);
+  const currentCountries = filteredCountries || countries;
+  // @TODO:
+  // Could extract this and found countries filtering into an array service
+  // Even so, I think that would be over-engineering
+  // DRY principle is good as long as it doesn't overcomplicate things
+  // DRY vs. Readability balance is important.
+  const allRegions: string[] = currentCountries.map((country: Country) => country.region);
 
   const handleCountryClick = useCallback((countryName) => {
     router.push({
+      // @TODO: Create routes enum for easier maintainability
       pathname: `country/[uid]`,
       query: { uid: countryName.toLowerCase() }
     })
   }, []);
 
   const handleRegionSelection = useCallback((selectedRegion: string) => {
-    // @TODO:
-    // Keep close to O/C principle
-    // Two ifs with returns and end return are better than and if with two elses
-    if(!selectedRegion.length) {
-      return setFilteredCountries(null);
-    };
-    const foundCountries: Country[] = countries.filter(country => country.region === selectedRegion);
 
-    if(!foundCountries.length) {
-      // It's impossible, as the regions come from the countries obj[].
-      // But, for a better UX, we show all countries when none is found.
-      return setFilteredCountries(countries);
-    }
+    if(!selectedRegion.length) {
+      setSearchTerm('');
+      setFilteredCountries(null);
+      return;
+    };
+
+    const foundCountries: Country[] = currentCountries.filter(country => country.region === selectedRegion);
     
     return setFilteredCountries(foundCountries);
   
-  }, [countries]);
+  }, [currentCountries]);
+
+  const handleCountrySearch = useCallback( async (newSearchTerm: string) => {
+    // @TODO: Add debounce!
+    setSearchError(null);
+    setSearchTerm(newSearchTerm);
+
+    if(newSearchTerm.length < 3) {
+      return setSearchError('Please, add at least 3 characters.')
+    };
+    await countriesApi
+      .getByNameAPI(newSearchTerm)
+      .then((data: any) => setFilteredCountries(data.data))
+  }, [])
 
   return (
     <>
-    {/*
-      @TODO: Object.values() was added so we don't deconstruct the Set
-      Compiler doesn't like it. Should to some tweaking to tsconfig and remove the hack.
-    */}
-    <FilterDropdown
-      options={['', ...Object.values(new Set(allRegions))]}
-      dataTest="regions"
-      onOptionSelect={ handleRegionSelection }
-    />
-    <CountriesWrapper>
-      {
-        (filteredCountries || countries).map(country => {
-         const { name, flag, population, region, capital, alpha3Code } = country;
-          return (
-            <Card
-              key={ alpha3Code }
-              cardKey={ alpha3Code }
-              title={ name }
-              image={ flag }
-              style={{ shadow: true }}
-              onClick={ handleCountryClick }
-              body={{
-                population: new Intl.NumberFormat('en-US').format(population),
-                region,
-                capital
-              }}
-            />
-          )
-        })
-      }
-    </CountriesWrapper>
+      <SearchAndFilterWrapper>
+        <SearchConsole
+          searchBox={{
+            inputPlaceholder:"Search for a country",
+            inputName: "country-search",
+            onChange:handleCountrySearch,
+            error: searchError,
+            value: searchTerm
+          }}
+          filter={{
+            // @TODO:
+            // Compiler doesn't like Set deconstruction. Should do some tweaking to tsconfig.
+            // @ts-ignore
+            options: ['', ...new Set(allRegions)],
+            dataTest: "regions",
+            onOptionSelect: handleRegionSelection
+          }}
+        />
+      </SearchAndFilterWrapper>
+      <CountriesWrapper>
+        {
+          // @TODO: Should extract this into a new standalone component.
+          // Readability ++
+          currentCountries.map(country => {
+          const { name, flag, population, region, capital, alpha3Code } = country;
+            return (
+              <Card
+                key={ alpha3Code }
+                cardKey={ alpha3Code }
+                title={ name }
+                image={ flag }
+                style={{ shadow: true }}
+                onClick={ handleCountryClick }
+                body={{
+                  population: new Intl.NumberFormat('en-US').format(population),
+                  region,
+                  capital
+                }}
+              />
+            )
+          })
+        }
+      </CountriesWrapper>
     </>
   )
 }

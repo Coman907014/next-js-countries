@@ -15,7 +15,7 @@ export const CardWrapper = styled.div<{width?: string; shadow?: boolean}>`
   border-radius: 20px;
   border: 1px solid ${({ theme: { colors } }: ThemeProps<CustomThemeProps>) => colors.cardBorder};
   width: ${p => p.width ?? `${cardWidth}%`};
-  margin: 5px calc(${cardWidth}%/6);
+  margin: 5px calc(${cardWidth}% / 6);
   cursor: pointer;
 
   ${mediaBelow.mobile(

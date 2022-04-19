@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import { FilterSelect, FilterOption } from "./style";
 
-interface FilterDropdownProps {
+export interface FilterDropdownProps {
   options: string[];
   onOptionSelect: (optionValue: string) => void;
   dataTest: string;

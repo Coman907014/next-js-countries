@@ -38,7 +38,7 @@ const CountryPageComponent: FunctionComponent<CountryPageComponentProps> = ({ co
     <ButtonWrapper>
       <BackButton data-test={`button:country:back`} onClick={ handleBackButtonClick }>
         <ArrowBack />
-        Back
+          Back
       </BackButton>
     </ButtonWrapper>
     <CountryWrapper data-test={`wrapper:country:${country?.name}`}>
