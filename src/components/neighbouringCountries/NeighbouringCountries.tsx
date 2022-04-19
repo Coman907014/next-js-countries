@@ -21,7 +21,11 @@ const NeighbouringCountries: FunctionComponent<NeighbouringCountriesProps> = ({ 
         {
           Object
             .entries(keyValue)?.map(([name, value]) => (
-                <Name onClick={() => handleNameClick(name)} key={ value }>{ value }</Name>
+                <Name
+                  onClick={() => handleNameClick(name)}
+                  key={ value }
+                  data-test={`text:neighbouring-countries:${name}`}
+                >{ value }</Name>
               )
             )
         }

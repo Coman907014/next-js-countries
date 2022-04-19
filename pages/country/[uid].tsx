@@ -38,9 +38,9 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (props: { params: { uid: string | any[]; }; }) => {
   const { params } = props;
-  
-  const country = await countriesApi.getByCountryCode(params?.uid as string)
 
+  const country = await countriesApi.getByCountryCode(params?.uid as string)
+  console.log("THE COUNTRY", country)
 
   return {
     props: {

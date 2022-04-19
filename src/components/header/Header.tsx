@@ -20,7 +20,7 @@ const Header: FunctionComponent<HeaderProps> = ({
     >
       <HeaderElement
         contentAlign="flex-start"
-        data-test={`element:header:${leftSideText}`}
+        data-test={`element:header:${leftSideText.toLowerCase().split(' ').join('-')}`}
         aria-labelledby={`Header element ${leftSideText}`}
         onClick={() => window.location.href = '/'}
       >
@@ -30,7 +30,7 @@ const Header: FunctionComponent<HeaderProps> = ({
 
       <HeaderElement
         contentAlign="flex-end"
-        data-test={`element:header:${rightSideText}`}
+        data-test={`element:header:${rightSideText.toLowerCase().split(' ').join('-')}`}
         aria-labelledby={`Header element ${rightSideText}`}
         onClick={ onRightSideClick }
       >

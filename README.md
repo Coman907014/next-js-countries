@@ -43,6 +43,7 @@ Search for @TODO
 10. Accessibility testing lib for Cypress should be added -> https://www.npmjs.com/package/cypress-axe. This could be a good one.
 11. Filter, then Search functionality is not working, should be added.
 12. Debouncer on search input should be added
+13. Finish GitHub Pipeline - Include headless Cypress inside
 
 # Known BE Issues
 Czech Republic has no border countries
