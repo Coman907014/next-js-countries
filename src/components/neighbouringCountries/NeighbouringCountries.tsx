@@ -13,7 +13,7 @@ const NeighbouringCountries: FunctionComponent<NeighbouringCountriesProps> = ({ 
   const keyValue: { [key: string]: string }= {};
   borders?.map(border => keyValue[`${border}`] = countryNameMapper.getNameFromAlfa3(border) || 'NOT_FOUND')
 
-  const handleNameClick = useCallback((name: string) => router.push(`${name.toLowerCase()}`), []);
+  const handleNameClick = useCallback((name: string) => router.push(`${name.toLowerCase()}`), [router]);
 
   return (
     <NeighbouringCountriesWrapper>

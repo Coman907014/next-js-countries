@@ -22,8 +22,8 @@ const CountryDetails: FunctionComponent<CountryDetailsProps> = ({ country }) => 
         style={{ width: 'auto' }}          
         body={{
           ['top-level-domain']: country.nativeName,
-          currencies: country.currencies.map(currency => currency.name).join(', '),
-          languages: country.languages.map(currency => currency.name).join(', '),
+          currencies: country.currencies?.map(currency => currency.name).join(', '),
+          languages: country.languages?.map(currency => currency.name).join(', '),
         }}
       />
     </>

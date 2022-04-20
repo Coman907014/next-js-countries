@@ -29,4 +29,19 @@ describe('Countries Page Content Layout', () => {
     cy.get('[data-test="input:search-box:country-search"]')
       .should('exist');
   })
+
+  it('Should render countries', () => {
+
+    cy.get('[data-test="wrapper:header"]')
+      .should('exist');
+  
+    cy.get('[data-test="wrapper:card:Rwanda"]')
+      .should('exist');
+
+    cy.get('[data-test="wrapper:card:Bulgaria"]')
+      .should('exist');
+
+    cy.get('[data-test="wrapper:card:Dominica"]')
+      .should('exist');
+  })
 })

@@ -53,7 +53,6 @@ class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
-        <script src="https://service.force.com/embeddedservice/5.0/esw.min.js" />
       </Html>
     );
   }

@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { GetStaticProps } from 'next';
 import React, { FunctionComponent } from 'react';
 import countriesApi from '../../src/api/countries';
 import { Country } from '../../src/models/Country';
@@ -27,11 +26,12 @@ const CountryPage: FunctionComponent<CountryPageProps> = ({ country }) => {
 }
 
 export const getStaticPaths = async () => {
+
+  const countries: Country[] = await countriesApi.getAll();
+  const paths: { params: { uid: string; }; }[] = countries.map(country => ( { params: { uid: country.alpha3Code } } ) );
+
   return {
-    paths: [
-      '/country/[uid]',
-      { params: { uid: 'some-uid' } },
-    ],
+    paths,
     fallback: true,
   }
 };
@@ -40,7 +40,6 @@ export const getStaticProps = async (props: { params: { uid: string | any[]; }; 
   const { params } = props;
 
   const country = await countriesApi.getByCountryCode(params?.uid as string)
-  console.log("THE COUNTRY", country)
 
   return {
     props: {

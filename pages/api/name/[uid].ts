@@ -10,7 +10,7 @@ const handler = async (req: NextApiRequest, res:  NextApiResponse) => {
   
   await countriesApi
     .getByName(splitUrl[splitUrl.length - 1])
-    .then((data: any) => res.status(200).json({ data }))
+    .then(data => res.status(200).json({ data }))
     .catch(() => res.status(200).json({ data: [] }));
 }
 

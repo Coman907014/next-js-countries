@@ -41,6 +41,7 @@ const Card: FunctionComponent<CardProps> = ({ image, title, body, onClick, style
       }
       <CardBody>
         {
+          // @TODO: This is a standalone component, create a CardBody component that does this mapping.
           Object.entries(body).map(([objTitle, objValue]) => {
             return (
               <CardBodyElement data-test={`wrapper:card-list:${objTitle}`} key={objTitle}>

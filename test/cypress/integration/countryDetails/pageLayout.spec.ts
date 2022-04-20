@@ -3,7 +3,8 @@ import mocks from "../actions/mocks";
 describe('Country Details - Page Layout', () => {
 
   beforeEach(() => {
-    mocks.getCountryDetails('bgr')
+    mocks.getAllCountries();
+    mocks.getCountryDetails('bgr');
     // @TODO: Route should be coming from enum already implemented in app.
     cy.visit('http://localhost:3000/country/bgr');
   })

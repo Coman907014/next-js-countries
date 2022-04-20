@@ -2,11 +2,9 @@ import React, { FunctionComponent, useCallback, useState } from "react";
 import { useRouter } from 'next/router'
 import Card from "../../components/card/Card";
 import { Country } from "../../models/Country";
+import countriesApi from "../../api/countries";
 
 import { CountriesWrapper, SearchAndFilterWrapper } from "./style";
-import FilterDropdown from "../../components/filterDropdown/FilterDropdown";
-import SearchBox from "../../components/searchBox/SearchBox";
-import countriesApi from "../../api/countries";
 import SearchConsole from "../../components/searchConsole/SearchConsole";
 
 interface CountriesProps {
@@ -33,7 +31,7 @@ const CountriesPageComponent: FunctionComponent<CountriesProps> = ({ countries }
       pathname: `country/[uid]`,
       query: { uid: countryName.toLowerCase() }
     })
-  }, []);
+  }, [router]);
 
   const handleRegionSelection = useCallback((selectedRegion: string) => {
 
@@ -59,7 +57,7 @@ const CountriesPageComponent: FunctionComponent<CountriesProps> = ({ countries }
     };
     await countriesApi
       .getByNameAPI(newSearchTerm)
-      .then((data: any) => setFilteredCountries(data.data))
+      .then((data) => setFilteredCountries(data.data as Country[]))
   }, [])
 
   return (
@@ -85,7 +83,7 @@ const CountriesPageComponent: FunctionComponent<CountriesProps> = ({ countries }
       </SearchAndFilterWrapper>
       <CountriesWrapper>
         {
-          // @TODO: Should extract this into a new standalone component.
+          // @TODO: Should extract this into a new, standalone, component.
           // Readability ++
           currentCountries.map(country => {
           const { name, flag, population, region, capital, alpha3Code } = country;

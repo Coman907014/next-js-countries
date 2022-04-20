@@ -23,7 +23,7 @@ const CountryPageComponent: FunctionComponent<CountryPageComponentProps> = ({ co
   const handleBackButtonClick = useCallback(() => {
     // @TODO: Extract routes in an enum for easier maintainability.
     router.push('/countries');
-  }, []);
+  }, [router]);
 
   // @TODO:
   // Too many components here.

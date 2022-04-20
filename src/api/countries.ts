@@ -9,12 +9,12 @@ const countriesApi = {
   },
   // @TODO: This one is being used for our own API
   // Should be moved into another domain.
-  getByNameAPI(name: string): any {
+  getByNameAPI(name: string): Promise<{data: Country[]}> {
     return httpClient
       .get(`api/name/${name}`)
-      .then(response => response.data as Country)
+      .then(response => response.data as {data: Country[]})
   },
-  getByName(name: string): any {
+  getByName(name: string): Promise<Country> {
     return httpClient
       .get(`name/${name}`)
       .then(response => response.data as Country)
