@@ -35,7 +35,7 @@ const CountriesPageComponent: FunctionComponent<CountriesProps> = ({ countries }
 
   const handleRegionSelection = useCallback((selectedRegion: string) => {
 
-    if(!selectedRegion.length) {
+    if(selectedRegion === 'All Regions') {
       setSearchTerm('');
       setFilteredCountries(null);
       return;
@@ -75,7 +75,7 @@ const CountriesPageComponent: FunctionComponent<CountriesProps> = ({ countries }
             // @TODO:
             // Compiler doesn't like Set deconstruction. Should do some tweaking to tsconfig.
             // @ts-ignore
-            options: ['', ...new Set(allRegions)],
+            options: ['All Regions', ...new Set(allRegions)],
             dataTest: "regions",
             onOptionSelect: handleRegionSelection
           }}
